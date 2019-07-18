@@ -1,6 +1,7 @@
 import React ,{useEffect, useState,  } from 'react';
 import './App.css';
 import Recipe from './components/Recipe';
+import Navbar from './components/Navbar';
 
 const App = () => {
   const APP_ID = '400795d8';
@@ -47,7 +48,7 @@ const App = () => {
        </form>
        <div>
        {recipes.map(recipe =>(
-         <Recipe
+          <Recipe
            key={recipe.recipe.label}
            title={recipe.recipe.label}
            calories={recipe.recipe.calories}
@@ -58,7 +59,8 @@ const App = () => {
     </div>
   </div>
     )
-
   }
+  // this is giving me an error
+ // <Navbar />
 
 export default App;
