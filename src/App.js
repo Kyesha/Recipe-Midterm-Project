@@ -1,6 +1,7 @@
 import React ,{useEffect, useState,  } from 'react';
 import './App.css';
 import Recipe from './components/Recipe';
+import Navbar from './components/Navbar';
 
 const App = () => {
   const APP_ID = '400795d8';
@@ -16,7 +17,7 @@ const App = () => {
 
   const getRecipes = async () => {
     const response = await fetch(
-      `https://api.edamam.com/search?q=chicken&app_id=${APP_ID}&app_key=${APP_KEY}`
+      `https://api.edamam.com/search?q={query}&app_id=${APP_ID}&app_key=${APP_KEY}`
     );
     const data = await response.json();
     setRecipes(data.hits);
@@ -30,6 +31,7 @@ const App = () => {
   const getSearch = e => {
     e.preventDefault ();
     setQuery(search);
+    setSearch('')
   };
 
     return (
@@ -44,7 +46,7 @@ const App = () => {
           <button className="search-button" type="submit">Search</button>
        </form>
        {recipes.map(recipe =>(
-         <Recipe
+          <Recipe
            key={recipe.recipe.label}
            title={recipe.recipe.label}
            calories={recipe.recipe.calories}
@@ -54,7 +56,8 @@ const App = () => {
        ))}
     </div>
     )
-
   }
+  // this is giving me an error
+ // <Navbar />
 
 export default App;
